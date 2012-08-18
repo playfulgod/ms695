@@ -1,6 +1,6 @@
 Optimus M+ Cyanogenmod 9 device tree
 
-#hitsquad bitch.
+\#hitsquad bitch.
 
 how2eat:
 
