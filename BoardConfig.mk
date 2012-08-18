@@ -66,3 +66,6 @@ BOARD_USE_USB_MASS_STORAGE_SWITCH := true
 
 # Input
 BOARD_HAS_NO_SELECT_BUTTON := true
+
+# Make things easy ;)
+TARGET_OTA_ASSERT_DEVICE := m3,MS695
