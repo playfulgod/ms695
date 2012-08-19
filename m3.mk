@@ -46,20 +46,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 DEVICE_PACKAGE_OVERLAYS += device/lge/m3/overlay
 
-PRODUCT_COPY_FILES += \
-	frameworks/base/data/etc/handheld_core_hardware.xml:system/etc/permissions/handheld_core_hardware.xml \
-	frameworks/base/data/etc/android.hardware.camera.flash-autofocus.xml:system/etc/permissions/android.hardware.camera.flash-autofocus.xml \
-	frameworks/base/data/etc/android.hardware.telephony.cdma.xml:system/etc/permissions/android.hardware.telephony.cdma.xml \
-	frameworks/base/data/etc/android.hardware.location.gps.xml:system/etc/permissions/android.hardware.location.gps.xml \
-	frameworks/base/data/etc/android.hardware.wifi.xml:system/etc/permissions/android.hardware.wifi.xml \
-	frameworks/base/data/etc/android.hardware.sensor.accelerometer.xml:system/etc/permissions/android.hardware.sensor.accelerometer.xml \
-	frameworks/base/data/etc/android.hardware.sensor.compass.xml:system/etc/permissions/android.hardware.sensor.compass.xml \
-	frameworks/base/data/etc/android.hardware.sensor.light.xml:system/etc/permissions/android.hardware.sensor.light.xml \
-	frameworks/base/data/etc/android.hardware.sensor.proximity.xml:system/etc/permissions/android.hardware.sensor.proximity.xml \
-	frameworks/base/data/etc/android.hardware.touchscreen.multitouch.jazzhand.xml:system/etc/permissions/android.hardware.touchscreen.multitouch.jazzhand.xml \
-	frameworks/base/data/etc/android.software.sip.voip.xml:system/etc/permissions/android.software.sip.voip.xml
-
-
 #Common packages (gingerbread/ics)
 PRODUCT_PACKAGES += \
 	librs_jni \
@@ -98,17 +84,33 @@ PRODUCT_PACKAGES += AndroidTerm DSPManager
 PRODUCT_TAGS += dalvik.gc.type-precise
 
 PRODUCT_COPY_FILES += \
-	device/lge/m3/vold.fstab:system/etc/vold.fstab
+	device/lge/m3/conf/vold.fstab:system/etc/vold.fstab
+	
+# Init
+PRODUCT_COPY_FILES += \
+	device/lge/m3/conf/init.ms695.rc:root/etc/init.ms695.rc \
+	device/lge/m3/conf/init.ms695.usb.rc:root/etc/init.ms695.usb.rc \
+	device/lge/m3/conf/ueventd.ms695.rc:root/etc/ueventd.ms695.rc
+	
+
 
 # copy all vendor (lge) kernel modules to system/lib/modules
 PRODUCT_COPY_FILES += $(shell test -d vendor/lge/m3/lib/modules &&  \
 	find vendor/lge/m3/lib/modules -name '*.ko' \
 	-printf '%p:system/lib/modules/%f ')
+	
+PRODUCT_COPY_FILES += $(shell test -d vendor/lge/m3/lib/modules &&  \
+	find vendor/lge/m3/lib/modules -name '*.ko' \
+	-printf '%p:root/lib/modules/%f ')
 
 # copy all others kernel modules under the "modules" directory to system/lib/modules
 PRODUCT_COPY_FILES += $(shell test -d device/lge/m3/modules && \
 	find device/lge/m3/modules -name '*.ko' \
 	-printf '%p:system/lib/modules/%f ')
+
+PRODUCT_COPY_FILES += $(shell test -d device/lge/m3/modules && \
+	find device/lge/m3/modules -name '*.ko' \
+	-printf '%p:root/lib/modules/%f ')
 
 # Live wallpaper packages
 PRODUCT_PACKAGES += \
@@ -118,15 +120,9 @@ PRODUCT_PACKAGES += \
         VisualizationWallpapers
 
 # Publish that we support the live wallpaper feature.
-PRODUCT_COPY_FILES += \
-        packages/wallpapers/LivePicker/android.software.live_wallpaper.xml:/system/etc/permissions/android.software.live_wallpaper.xml
 
 # ICS USB Packages
 PRODUCT_PACKAGES += com.android.future.usb.accessory
-
-PRODUCT_COPY_FILES += \
-        frameworks/base/data/etc/android.hardware.usb.host.xml:system/etc/permissions/android.hardware.usb.host.xml \
-        frameworks/base/data/etc/android.hardware.usb.accessory.xml:system/etc/permissions/android.hardware.usb.accessory.xml \
 
 ######################################################################################################################################
 

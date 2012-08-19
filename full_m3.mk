@@ -35,7 +35,7 @@ PRODUCT_PROPERTY_OVERRIDES := \
 
 # Inherit from those products. Most specific first.
 $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base.mk)
-$(call inherit-product, frameworks/base/build/phone-hdpi-512-dalvik-heap.mk)
+#$(call inherit-product, frameworks/base/build/phone-hdpi-512-dalvik-heap.mk)
 $(call inherit-product, device/lge/m3/m3.mk)
 # Also get non-open-source files if available
 $(call inherit-product-if-exists, vendor/lge/m3/m3-vendor.mk)

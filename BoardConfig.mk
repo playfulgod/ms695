@@ -36,7 +36,7 @@ TARGET_ARCH_VARIANT_FPU := neon
 ARCH_ARM_HAVE_TLS_REGISTER := false
 
 # Kernel
-TARGET_KERNEL_CONFIG := cyanogen_m3_r0_defconfig
+TARGET_KERNEL_CONFIG := cyanogenmod_m3_defconfig
 BOARD_KERNEL_CMDLINE := console=ttyMSM0,115200,n8 androidboot.hardware=m3
 BOARD_KERNEL_BASE := 0x00200000
 BOARD_KERNEL_PAGESIZE := 4096
@@ -57,6 +57,7 @@ BOARD_SDCARD_DEVICE_SECONDARY := /dev/block/mmcblk1k1
 BOARD_SDEXT_DEVICE := /dev/block/mmcblk1p2
 
 # Recovery
+TARGET_RECOVERY_FSTAB := device/lge/m3/recovery/recovery.fstab
 TARGET_RECOVERY_INITRC := device/lge/m3/recovery/recovery.rc
 BOARD_CUSTOM_GRAPHICS  := ../../../device/lge/m3/recovery/graphics.c
 
